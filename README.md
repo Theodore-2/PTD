@@ -1,5 +1,5 @@
 
-# PTD (Pending Transaction Daemon)
+# PTD (Protected Transaction Detector)
 
 **PTD** is a WebSocket-based transaction monitoring daemon developed by EdgeFiLabs. It connects to a blockchain node or data provider via WebSocket and listens for new pending transactions in real time.
 
