@@ -1,57 +1,60 @@
 
-# PTD
+# PTD (Pending Transaction Daemon)
 
-**PTD (Placeholder Trading Daemon)** is a modular, extensible Golang project designed for managing websocket connections, configuration layers, and logging functionality in a clean, scalable architecture.
+**PTD** is a WebSocket-based transaction monitoring daemon developed by EdgeFiLabs. It connects to a blockchain node or data provider via WebSocket and listens for new pending transactions in real time.
 
-## 📁 Project Structure
+## 🛠️ Features
+
+- Connects to a configurable WebSocket endpoint
+- Subscribes to "newPendingTransactions" events
+- Gracefully handles shutdown signals (e.g., Ctrl+C)
+- Designed for modular extension and integration
+
+## 📂 Directory Structure
 
 ```
 .
-├── cmd/                  # Entry point (main.go)
-├── internal/             # Internal application logic
-│   ├── config/           # Configuration loading (config.go)
-│   └── websocket/        # WebSocket subscriptions and handlers
-├── pkg/                  # Shared utilities (e.g., logger)
-├── go.mod                # Go module file
-├── go.sum                # Go dependencies checksum
+├── cmd/                  # Application entry point (main.go)
+├── internal/
+│   ├── config/           # Configuration loading (credentials, endpoints)
+│   └── websocket/        # WebSocket client logic and subscription handling
+├── pkg/                  # Reusable utilities
+├── go.mod                # Module definition
+├── go.sum                # Dependency hashes
+├── .gitignore
 ```
 
 ## 🚀 Getting Started
 
-### Requirements
-- Go 1.20+
-- WebSocket API endpoint (configurable)
+### Prerequisites
 
-### Build and Run
+- Go 1.20 or newer
+- WebSocket endpoint for pending transaction stream
+
+### Installation
 
 ```bash
+git clone https://github.com/EdgeFiLabs/PTD.git
+cd PTD
 go build -o PTD ./cmd
 ./PTD
 ```
 
-## 🧠 Components
+## ⚙️ Configuration
 
-### `/cmd/main.go`
-Program entry point. Initializes config, logger, and starts websocket service.
+Edit the `credentials` file or modify `internal/config/config.go` to update your WebSocket endpoint or access credentials.
 
-### `/internal/config/`
-Handles configuration loading from files, environment, or flags.
+## 🧪 Example Run Output
 
-### `/internal/websocket/`
-Contains websocket connection logic, including subscription lifecycle.
+```
+-PROGRAM STARTS-
+Listening to new pending transactions...
+```
 
-### `/pkg/utils/logger.go`
-Centralized logging using standard Go log or external logger.
+## 📦 Used In
 
-## 🛡️ Security
+This service is used in monitoring systems, transaction sniffers, and custom mempool analysis tools.
 
-Make sure the following files are excluded from your repository:
+## 🧾 License
 
-- `PTD` (binary)
-- `credentials` (if containing secrets)
-
-These are already included in `.gitignore`.
-
-## 📜 License
-
-MIT License © 2025 Arda Çimen
+Private - © 2025 EdgeFiLabs. All rights reserved.
